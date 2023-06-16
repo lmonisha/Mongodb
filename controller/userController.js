@@ -69,7 +69,10 @@ module.exports.login = async (req, res) => {
 //show the list of users
 module.exports.index = (req, res, next) => {
     users.find().then(response => {
-        res.json(response)
+        res.json({
+            "Status":200,
+            response
+        })
     }).catch(error => {
         res.json({
             'message': 'An error occured '
@@ -84,6 +87,7 @@ module.exports.show=(req,res,next)=>{
     users.findById(userId)
     .then(response=>{
         res.json({
+            "Status":200,
             response
         })
     }).catch(error=>{
@@ -103,6 +107,7 @@ module.exports.update=(req,res,next)=>{
     }
     users.findByIdAndUpdate(userId,{$set:updateData}).then(()=>{
         res.json({
+            "Status":200,
             message:'employee updated successfully'
         })
     }).catch(error=>{
@@ -117,6 +122,7 @@ module.exports.destroy=(req,res,next)=>{
     let userId=req.body.userId
     users.findByIdAndRemove(userId).then(()=>{
         res.json({
+            "Status":200,
             message:"employee deleted successfully"
         })
     }).catch(err=>{

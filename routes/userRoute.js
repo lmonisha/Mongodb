@@ -6,8 +6,8 @@ router.post('/register',userController.register)
 router.post('/login',userController.login)
 router.get('/index', auth,userController.index)
 router.post('/show', auth,userController.show)
-router.post('/update', auth,userController.update)
-router.post('/destroy', auth,userController.destroy)
+router.put('/update', auth,userController.update)
+router.delete('/destroy', auth,userController.destroy)
 
 
 module.exports = router
